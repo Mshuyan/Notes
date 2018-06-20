@@ -36,6 +36,15 @@
 </dependency>
 ```
 
+---
+
+### ☀️shiro导致springboot事务不起效解决办法
+> 该问题是shiro比spring先启动，导致shiro的自定义realm中注入的service层无法交给spring管理导致；有3种解决方案
+1. shiro的自定义realm中不注入service，注入dao
+    > shiro的自定义realm中无法使用事务
+2. shiro的自定义realm中注入的service上使用`@Lazy`注解，将该service对象使用懒加载，亲测有效
+3. 创建监听器，等spring接在完成后再加载shiro，参见[shiro导致springboot事务不起效解决办法](https://blog.csdn.net/yucaifu1989/article/details/79206369)
+
 
 
 
