@@ -55,7 +55,50 @@ JSONObject jsonObject = new JSONObject();
 System.out.println(JSON.toJSONString(jsonObject,SerializerFeature.WriteMapNullValue));
 ```
 
+### ☀️序列化与`serialVersionUID`
 
+1. 什么叫序列化
+
+   > + 把Java对象转换为字节序列的过程称为对象的序列化。  
+   > + 把字节序列恢复为Java对象的过程称为对象的反序列化。
+
+   例：
+
+   + 序列化
+
+     ```java
+     Tank tank = new Tank();
+     FileOutputStream fos = new FileOutputStream("Tank.txt");
+     ObjectOutputStream oos = new ObjectOutputStream(fos);
+     oos.writeObject(tank);
+     ```
+
+   + 反序列化
+
+     ```java
+     FileInputStream fis = new FileInputStream("Tank.txt");
+     ObjectInputStream ois = new ObjectInputStream(fis);
+     Tank tank = (Tank) ois.readObject();
+     ```
+
+   > 序列化只是1个概念不只有上述方法属于序列化，比如将对象转为json也属于序列化
+
+2. `serialVersionUID`
+
+   ```java
+   @Data
+   public class Tank implements Serializable {
+       private static final long serialVersionUID = 123456789L;
+       public int positionX;
+       public int positionY;
+   }
+   ```
+
+   > + 上述类中就包含1个`serialVersionUID`属性，这个属性是用于标记这个类的版本的
+   >
+   > + 序列化过程：
+   >
+   >   序列化操作的时候系统会把当前类的serialVersionUID写入到序列化文件中，当反序列化时系统会去检测文件中的serialVersionUID，判断它是否与当前类的serialVersionUID一致，如果一致就说明序列化类的版本与当前类版本是一样的，可以反序列化成功，否则失败。
 
 
 
