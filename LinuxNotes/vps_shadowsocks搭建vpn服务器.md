@@ -99,7 +99,7 @@
 
   修改`/etc/shadowsocks.json`，保存退出，并执行`systemctl restart shadowsocks`生效更改
 
-+ 防火墙开始ss服务端口
++ 防火墙开启ss服务端口
 
   > + ss服务端口就是在`/etc/shadowsocks.json`文件汇总配置的端口
   > + 不同linux服务器开启端口的方式不太相同，这里使用的是centos7
