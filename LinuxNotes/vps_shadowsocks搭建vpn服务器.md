@@ -89,9 +89,9 @@
   > 此时shadowsocks服务已经安装完成，会自动打印出连接vpn的相关信息
 
   ```txt
-  server:      45.76.196.180
+  server:      xx.xx.xx.xx
   server_port: 8388
-  password:    5g5zU2LvLquPbhHtWomWA3q9FiXdDVoc
+  password:    4gdf7g7rVjd0Hgddf0nHDFfdgv90c
   method:      aes-256-cfb
   ```
 
