@@ -288,6 +288,69 @@ tail -f test.log
 
 > 此时，如果`test.log`文件中被追加了内容，会立即显示在控制台上
 
+### 防火墙
+
+#### centos7
+
++ 临时开启防火墙
+
+  ```shell
+  $ systemctl start  firewalld
+  ```
+
++ 临时关闭防火墙
+
+  ```shell
+  $ systemctl stop  firewalld
+  ```
+
++ 重启防火墙
+
+  ```shell
+  $ systemctl restart  firewalld
+  ```
+
++ 查看防火墙是否开启
+
+  ```shell
+  $ firewall-cmd --state
+  # 或
+  $ systemctl status firewalld
+  ```
+
++ 禁止开启启动
+
+  ```shell
+  $ systemctl disable firewalld
+  ```
+
++ 允许开机启动
+
+  ```shell
+  $ systemctl enable firewalld
+  ```
+
++ 开放端口
+
+  ```shell
+  $ firewall-cmd --zone=public --add-port=80/tcp --permanent
+  $ systemctl restart  firewalld
+  ```
+
++ 关闭已开放端口
+
+  ```shell
+  $ firewall-cmd --zone=public --remove-port=80/tcp --permanent
+  $ systemctl restart  firewalld
+  ```
+
++ 查看端口状态
+
+  ```shell
+  $ firewall-cmd --query-port=80/tcp
+  ```
+
+
 ## 系统概念
 
 ### 文件存储结构
