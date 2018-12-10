@@ -22,4 +22,11 @@
   $ git config --global http.proxy
   ```
 
+### 多远程仓库无法提交与拉取
+
+> 当1个本地仓库配置多个远程仓库时，后添加的远程仓库一般都会无法pull和push，此时使用如下命令进行强行push
+
+```shell
+git push -u gitlab master -f
+```
 
