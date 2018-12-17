@@ -139,21 +139,29 @@
 
 > Centos
 
-+ 安装
++ YUM方式
 
-  参见[mysql安装](https://blog.csdn.net/lihao21/article/details/80692068)
+  + 安装
 
-+ 重启mysql
+    参见[YUM方式安装mysql](https://blog.csdn.net/lihao21/article/details/80692068) 
 
-  ```
-  systemctl stop mysqld.service
-  ```
+  + 重启mysql
 
-+ 开机自动启动
+    ```
+    systemctl stop mysqld.service
+    ```
 
-  ```
-  systemctl enable mysqld.service
-  ```
+  + 开机自动启动
+
+    ```
+    systemctl enable mysqld.service
+    ```
+
++ 压缩包方式
+
+  + 安装
+
+    参见[解压缩方式安装mysql](https://blog.csdn.net/vipbupafeng/article/details/80271089) 
 
 ### node
 
@@ -348,6 +356,68 @@ tail -f test.log
 
   ```shell
   $ firewall-cmd --query-port=80/tcp
+  ```
+
+#### iptables
+
+> Iptables 的配置最终会保存在`/etc/sysconfig/iptables`中
+
++ 临时关闭
+
+  ```shell
+  service iptables stop
+  ```
+
++ 临时开启
+
+  ```shell
+  service iptables start
+  ```
+
++ 重启
+
+  ```shell
+  service iptables restart
+  ```
+
++ 禁止开机启动
+
+  ```shell
+  chkconfig iptables off
+  ```
+
++ 允许开机启动
+
+  ```shell
+  chkconfig iptables on
+  ```
+
++ 开放端口
+
+  ```shell
+  iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+  ```
+
++ 查看端口状态、查看防火墙是否开启
+
+  ```shell
+  service iptables status
+  ```
+
++ 关闭端口
+
+  > 先查看要关闭的端口，然后根据类型、num删除那条记录即可
+
+  ```shell
+  iptables -D [类型] [num]
+  ```
+
+  ![image-20181212122915983](assets/image-20181212122915983.png) 
+
++ 保存端口配置
+
+  ```shell
+  service iptables save
   ```
 
 
