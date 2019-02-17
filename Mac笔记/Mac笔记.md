@@ -58,3 +58,19 @@
   ```
 
   这里虽然提示`failed`，但是已经可以在桌面上看到移动硬盘了
+
+## 启动mysql
+
+```shell
+$ mysql.server start
+```
+
+## Idea破解
+
+参见https://www.jianshu.com/p/f404994e2843
+
+## 软件安装
+
+### ruby
+
+mac本身自带ruby环境，如果存在版本问题，安装教程参见[如何在Mac OS X上安装 Ruby运行环境](https://www.cnblogs.com/daguo/p/4097263.html) 

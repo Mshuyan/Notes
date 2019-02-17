@@ -225,6 +225,21 @@
 
   最后执行`make install`
 
+### ruby
+
+> 参见[centos7/rhel7安装较高版本ruby2.2/2.3/2.4+](https://www.cnblogs.com/ding2016/p/7903147.html) 
+
++ 安装
+
+  > 本安装使用rvm版本管理工具
+
+  + 执行`gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`
+  + 执行`\curl -sSL https://get.rvm.io | bash -s stable`
+  + 执行`source /etc/profile.d/rvm.sh`
+  + 执行`rvm list known`查看ruby版本
+  + 执行`rvm install 2.6`安装2.6版本ruby
+
+
 ## 常用操作
 
 ### 修改环境变量
@@ -419,6 +434,7 @@ tail -f test.log
   ```shell
   service iptables save
   ```
+
 
 
 ## 系统概念
