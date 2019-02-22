@@ -189,6 +189,7 @@
 + 使用方法
 
   `synchronized`有多种使用方法
+
   + 作用于代码块
 
     语法：synchronized( this ) { }
@@ -510,6 +511,7 @@
 ##### Object类
 
 + wait
+
   + 语法
 
     ```java
@@ -594,6 +596,12 @@ wait/notify必须存在于synchronized块中。并且，这三个关键字针对
 
 ## 集合
 
+### 概念
+
++ 加载因子
+
+  当数据量达到总容量的多少时进行扩容
+
 ### 获得线程安全集合
 
 使用`Collections.synchronizedxxx()`方法获得，如：
@@ -604,13 +612,24 @@ Map<String,Object> map = Collections.synchronizedMap(new HashMap<>());
 
 ### hashMap
 
-+ JDK1.7及以前版本，hashMap的实现方式为：数组 + 单向链表
++ JDK1.7及以前版本，hashMap的实现方式为：哈希表
 
 + JDK1.8及以后版本，hashMap的实现方式为：数组 + 单向链表 + 红黑树
 
   链表长度大于8时，转换为红黑树
 
++ hashMap允许null值
 
++ hashMap初始容量为16，加载因子为0.75
+
++ 线程不安全
+
+### hashTable
+
++ 实现方式为：哈希表
++ 线程安全的集合
++ 不允许null值
++ 初始容量为11，加载因子为0.75
 
 
 
