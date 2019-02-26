@@ -874,7 +874,15 @@ wait/notify必须存在于synchronized块中。并且，这三个关键字针对
 
 ##### 原理
 
+> 自己查看`ThreadLocal.get()`源码
 
+每个`Thread`对象中都有1个`ThreadLocalMap`对象，用来保存于当前线程绑定的所有属性
+
+当指定执行`ThreadLocal`对象的`get()`方法时，就会去当前线程对象中查看`ThreadLocalMap`变量，找到对应的对象了就返回，否则为当前线程创建1个该对象的副本
+
+如：在1个线程类中创建2个`ThreadLocal`对象，则使用该类创建的每个线程中的结构如下图
+
+![image-20190226133347142](assets/image-20190226133347142-1159227.png) 
 
 #### 原子类
 
