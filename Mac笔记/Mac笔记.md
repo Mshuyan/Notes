@@ -74,3 +74,77 @@ $ mysql.server start
 ### ruby
 
 mac本身自带ruby环境，如果存在版本问题，安装教程参见[如何在Mac OS X上安装 Ruby运行环境](https://www.cnblogs.com/daguo/p/4097263.html) 
+
+## 自己编写ssh工具
+
++ [mac下使用sshpass实现ssh记住密码](https://blog.csdn.net/zhaojianyin/article/details/83899671) 
+
++ python脚本
+
+  ```python
+  #!/usr/local/bin/python3.6
+   
+  import json
+  import sys
+  import os
+   
+  path = os.path.split(os.path.realpath(__file__))[0] + "/sshs.conf"
+   # 读取配置文件
+  try:
+      f = open(path,'r')
+  except IOError:
+      print ("ERROR：找不到配置文件")
+      exit()
+  
+  # 检查配置文件
+  try:
+      js = json.load(f)
+  except ValueError:
+      print ("ERROR：配置文件不是json文件")
+      exit()
+  
+  # 遍历并打印配置
+  if isinstance(js,dict):
+      for key in js.keys():
+          if isinstance(js[key],dict):
+              if("name" in js[key].keys()):
+                  if isinstance(js[key]["name"],str):
+                      if len(sys.argv) > 1:
+                          if sys.argv[1] == key:
+                              if("cmd" in js[key].keys()):
+                                  if isinstance(js[key]["cmd"],str):
+                                      os.system(js[key]["cmd"])
+                                  else:
+                                      print ("ERROR：host " + key + "：cmd属性值格式错误")
+                              else:
+                                  print ("ERROR：host " + key + "：没有找到cmd选项")
+                              exit()
+                      else:
+                          print (key + "  " + js[key]["name"])
+                  else:
+                      print ("ERROR：host " + key + "：name属性值格式错误")
+              else:
+                  print ("ERROR：host " + key + "：对象中找不到name属性")
+          else:
+              print ("ERROR：host " + key + "：属性值格式错误")
+  else:       
+      print ("ERROR：配置文件格式错误")
+  if len(sys.argv) > 1:
+      print ("未找到指定的host")
+  
+  ```
+
++ ssh账号配置文件
+
+  ```json
+  {
+      "m1":{
+          "cmd": "sshpass -p 'your-password'  ssh -o StrictHostKeychecking=no -p 22 root@192.168.0.12",
+          "name": "short-name"
+      }
+  }
+  ```
+
+## 终端调色
+
+[Mac 终端的字体和配色](https://1ili.github.io/2018/04/19/my-terminal-confing/) 
