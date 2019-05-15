@@ -133,6 +133,30 @@
 
 > 查看磁盘分区
 
+### >、>>
+
++ `>`
+
+  表示使用新文本覆盖某文件中的文本内容
+
+  例
+
+  ```shell
+  # 使用1.txt中的内容覆盖2.txt中的内容
+  $ cat 1.txt > 2.txt
+  ```
+
++ `>>`
+
+  将新文本追加到某文件
+
+  ```shell
+  # 将1.txt中的内容追加到2.txt
+  $ cat 1.txt >> 2.txt
+  ```
+
+  
+
 ## 常用软件安装
 
 ### mysql
@@ -215,7 +239,9 @@
 
 ### shadowsocks
 
-+ 参见：[centos翻墙](https://bodyno.com/tool/2017/09/03/centos-ss.html)
++ 参见：
+  + [centos翻墙](https://bodyno.com/tool/2017/09/03/centos-ss.html)
+  + [CentOS 7 安装 shadowsocks 客户端](https://brickyang.github.io/2017/01/14/CentOS-7-安装-Shadowsocks-客户端/) 
 
 ### tmux
 
@@ -239,8 +265,17 @@
   + 执行`rvm list known`查看ruby版本
   + 执行`rvm install 2.6`安装2.6版本ruby
 
-
 ## 常用操作
+
+### 换源
+
+[将Centos的yum源更换为国内的阿里云源](https://www.jianshu.com/p/4aa7b63f9026)
+
+### 查看系统版本
+
+```shell
+$ cat /etc/redhat-release
+```
 
 ### 修改环境变量
 
