@@ -402,6 +402,12 @@ tail -f test.log
   $ systemctl restart  firewalld
   ```
 
++ 查看已开放端口
+
+  ```shell
+  $ firewall-cmd --list-ports 
+  ```
+  
 + 查看端口状态
 
   ```shell
