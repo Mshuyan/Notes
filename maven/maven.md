@@ -2,6 +2,10 @@
 
 ## 笔记
 
+### 依赖传递
+
+> 如果需要依赖传递，则父项目的打包方式必须声明为`pom`
+
 ### dependencyManagement与dependencies
 
 > 资料参见[dependencyManagement与dependencies区别](https://blog.csdn.net/snn1410/article/details/52859788)
