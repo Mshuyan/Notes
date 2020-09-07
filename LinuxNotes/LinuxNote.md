@@ -267,6 +267,19 @@
 
 ## 常用操作
 
+### 查看已死进程
+
+```
+dmesg | egrep -i -B100 'killed process'
+
+## 或:
+egrep -i 'killed process' /var/log/messages
+egrep -i -r 'killed process' /var/log
+
+## 或:
+journalctl -xb | egrep -i 'killed process'
+```
+
 ### 换源
 
 [将Centos的yum源更换为国内的阿里云源](https://www.jianshu.com/p/4aa7b63f9026)
@@ -573,3 +586,20 @@ tail -f test.log
   >   原因为：删除原文件时删除的是原文件所在目录的目录文件中最原始系统自动创建的指向这个文件实体的硬链接，而没有删除这个文件实体，删除最原始的硬链接后，并不影响手动创建的硬链接找到这个文件实体；而软链接文件中存的是原文件的全路径文件名，当系统根据该路径寻找原文件时，发现原文件所在目录的目录文件中已经没有那个文件名的文件了，所以找不到
   >
   > 除此之外，在使用上软硬连接没有任何区别。
+
+## 磁盘空间管理
+
+### 命令
+
++ df -h
+
+  查看磁盘分区
+
++ du -h --max-depth=1 ./
+
+  查看当前目录下文件夹大小（包含文件夹内所有文件）
+
+### 扩展分区
+
+> 参见：[扩展系统盘的分区和文件系统（Linux）](https://support.huaweicloud.com/intl/zh-cn/usermanual-evs/evs_01_0072.html) 
+
