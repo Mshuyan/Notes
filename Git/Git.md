@@ -30,6 +30,12 @@ ssh方式克隆和http方式克隆加速只能选1个
     git config --global https.https://github.com.proxy https://127.0.0.1:7890
     ```
 
++ 查看配置
+
+  ```sh
+  git config -l
+  ```
+  
 + 重置代理设置
 
   ```shell
