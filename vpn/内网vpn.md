@@ -58,6 +58,17 @@
 
 + 在`openvpn-install.sh`同级目录下，已经生成了1个`client.ovpn`文件，下载下来
 
++ 修改`client.ovpn`
+
+  ```sh
+  # 删除 block-outside-dns，否则将使用vpn的dns解析
+  # block-outside-dns
+  # 禁止从服务端拉取配置
+  route-nopull
+  # 只有这个号段走vpn
+  route 10.8.0.0 255.255.255.0  vpn_gateway
+  ```
+
 + 下载客户端并安装，导入`client.ovpn`配置文件，连接
 
   + windows
