@@ -1,4 +1,6 @@
-# 内网vpn
+# 服务端
+
+## 安装
 
 + 执行[openvpn-install.sh](./openvpn-install.sh)脚本
 
@@ -63,9 +65,22 @@
   + 每个用户需要使用安装脚本生成单独得`*.ovpn`文件，否则会导致抢ip
   + 理论上server端配置了`duplicate-cn`应该不会抢ip，但是发现了该问题，以后就使用不同得客户端文件登陆就可以了，这样也可以保证客户端ip固定
 
+## 修改客户端配置文件模板
+
++ 修改`/etc/openvpn/server/client-common.txt`文件
+
+# 客户端
+
+## 配置
+
 + 修改`client.ovpn`
 
   ```sh
+  # 多个服务端逐个尝试
+  remote 111.26.194.23 1194
+  remote 192.168.10.49 1194
+  # 连接超时
+  connect-timeout 10
   # 删除 block-outside-dns，否则将使用vpn的dns解析
   # block-outside-dns
   # 禁止从服务端拉取配置
@@ -73,6 +88,8 @@
   # 只有这个号段走vpn
   route 10.8.0.0 255.255.255.0  vpn_gateway
   ```
+
+## 使用
 
 + 下载客户端并安装，导入`client.ovpn`配置文件，连接
 
@@ -87,4 +104,8 @@
 + 查看自己ip
   + 鼠标放在右下角的图标上，即可看见分配的ip
   + 执行`ifconfig`或`ipconfig`，查看`10.8.0.x`的ip
+  
++ 此时，所有走vpn的网段口可以访问
+
+  + 服务端物理ip为`192.168.10.49`时，`192.168.10.*`网段的其他机器，不需要安装客户端，也可以被访问到
 

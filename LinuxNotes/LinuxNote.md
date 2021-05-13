@@ -489,7 +489,11 @@ tail -f test.log
   service iptables save
   ```
 
+### 清理`buff/cache`
 
+```shell
+$ sync;echo 3 > /proc/sys/vm/drop_caches
+```
 
 ## 系统概念
 

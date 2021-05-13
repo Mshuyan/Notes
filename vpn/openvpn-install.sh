@@ -77,7 +77,7 @@ new_client () {
 	echo "<tls-crypt>"
 	sed -ne '/BEGIN OpenVPN Static key/,$ p' /etc/openvpn/server/tc.key
 	echo "</tls-crypt>"
-	} > ~/"$1".ovpn
+	} > ~/openvpn/client/"$1".ovpn
 }
 
 if [[ -e /etc/openvpn/server/server.conf ]]; then
@@ -112,7 +112,7 @@ if [[ -e /etc/openvpn/server/server.conf ]]; then
 			# Generates the custom client.ovpn
 			new_client "$client"
 			echo
-			echo "Client $client added, configuration is available at:" ~/"$client.ovpn"
+			echo "Client $client added, configuration is available at:" ~/openvpn/client/"$client.ovpn"
 			exit
 			;;
 			2)
