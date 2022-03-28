@@ -69,6 +69,19 @@
 
 + 修改`/etc/openvpn/server/client-common.txt`文件
 
+## 访问服务端同网段其他机器
+
++ 将来自`10.8.0.*`网段请求转发到内网网卡
+
+  ```shell
+  $ sudo iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o ens192 -j MASQUERADE
+  ```
+
+# docker/k8s安装
+
++ docker：参见https://www.jianshu.com/p/3fcdbaa071e8
++ k8s：参见https://github.com/Mshuyan/kaikeba/tree/master/3.VIP%E8%AF%BE%E7%A8%8B/11.K8S#openvpn
+
 # 客户端
 
 ## 配置

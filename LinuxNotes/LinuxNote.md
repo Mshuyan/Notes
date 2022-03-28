@@ -495,6 +495,26 @@ tail -f test.log
 $ sync;echo 3 > /proc/sys/vm/drop_caches
 ```
 
+### 设置静态IP
+
++ 编辑`/etc/sysconfig/network-scripts/ifcfg-ens192`
+
+  ```shell
+  # 修改
+  BOOTPROTO="static"
+  # 新增
+  IPADDR="192.168.10.36"
+  GATEWAY="192.168.10.1"
+  NETMASK=255.255.255.0
+  DNS1=8.8.8.8
+  ```
+
++ 重启网卡
+
+  ```shell
+  $ systemctl restart network
+  ```
+
 ## 系统概念
 
 ### 文件存储结构
